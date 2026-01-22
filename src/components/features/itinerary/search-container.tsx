@@ -10,6 +10,7 @@ import { useItineraryStore } from '@/store/itinerary-store';
 import AirPlaneInFlight from '@/assets/icons/AirplaneInFlight.svg';
 import Warehouse from '@/assets/icons/Warehouse.svg';
 import RoadHorizon from '@/assets/icons/RoadHorizon.svg';
+import Image from 'next/image';
 
 export default function SearchContainer() {
     const [activeModal, setActiveModal] = useState<'flight' | 'hotel' | 'activity' | null>(null);
@@ -22,29 +23,35 @@ export default function SearchContainer() {
 
     return (
         <>
-            {/* Action Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <ActionCard
-                    variant="dark"
-                    title="Activities"
-                    description="Build, personalize, and optimize your itineraries with our trip planner."
-                    buttonText="Add Activities"
-                    onClick={() => setActiveModal('activity')}
-                />
-                <ActionCard
-                    variant="light"
-                    title="Hotels"
-                    description="Build, personalize, and optimize your itineraries with our trip planner."
-                    buttonText="Add Hotels"
-                    onClick={() => setActiveModal('hotel')}
-                />
-                <ActionCard
-                    variant="blue"
-                    title="Flights"
-                    description="Build, personalize, and optimize your itineraries with our trip planner."
-                    buttonText="Add Flights"
-                    onClick={() => setActiveModal('flight')}
-                />
+            <div className="flex xl:flex-row flex-col items-start justify-between gap-6">
+                {/* Action Cards */}
+                <div className="xl:max-w-[818px] grid grid-cols-1 xl:grid-cols-3 gap-6 mt-6">
+                    <ActionCard
+                        variant="dark"
+                        title="Activities"
+                        description="Build, personalize, and optimize your itineraries with our trip planner."
+                        buttonText="Add Activities"
+                        onClick={() => setActiveModal('activity')}
+                    />
+                    <ActionCard
+                        variant="light"
+                        title="Hotels"
+                        description="Build, personalize, and optimize your itineraries with our trip planner."
+                        buttonText="Add Hotels"
+                        onClick={() => setActiveModal('hotel')}
+                    />
+                    <ActionCard
+                        variant="blue"
+                        title="Flights"
+                        description="Build, personalize, and optimize your itineraries with our trip planner."
+                        buttonText="Add Flights"
+                        onClick={() => setActiveModal('flight')}
+                    />
+                </div>
+                <div className="flex items-center">
+                    <Image src="/user.png" alt="user" width={40} height={40} />
+                    <Image src="/xx.svg" alt="icon" width={69} height={40} />
+                </div>
             </div>
 
             {/* Trip itineraries */}
@@ -61,7 +68,7 @@ export default function SearchContainer() {
                             <AirPlaneInFlight className="size-6 text-black-primary" />
                             <p className="text-lg text-black-primary font-semibold">Flights</p>
                         </div>
-                        <button onClick={() => setActiveModal('flight')} className="h-[46px] bg-white py-3 px-6 text-primary-600 font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden md:block">Flights</span></button>
+                        <button onClick={() => setActiveModal('flight')} className="h-[46px] bg-white py-3 px-6 text-primary-600 font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden xl:block">Flights</span></button>
                     </div>
                     {flights.length > 0 ? (
                         <div className="space-y-4">
@@ -100,7 +107,7 @@ export default function SearchContainer() {
                             <Warehouse className="size-6 text-white" />
                             <p className="text-lg font-semibold">Hotels</p>
                         </div>
-                        <button onClick={() => setActiveModal('hotel')} className="h-[46px] bg-white py-3 px-6 text-black-primary font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden md:block">Hotels</span></button>
+                        <button onClick={() => setActiveModal('hotel')} className="h-[46px] bg-white py-3 px-6 text-black-primary font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden xl:block">Hotels</span></button>
                     </div>
                     {hotels.length > 0 ? (
                         <div className="space-y-4">
@@ -139,7 +146,7 @@ export default function SearchContainer() {
                             <RoadHorizon className="size-6 stroke-white" />
                             <p className="text-lg font-semibold">Activities</p>
                         </div>
-                        <button onClick={() => setActiveModal('activity')} className="h-[46px] bg-white py-3 px-6 text-black-primary font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden md:block">Activities</span></button>
+                        <button onClick={() => setActiveModal('activity')} className="h-[46px] bg-white py-3 px-6 text-black-primary font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden xl:block">Activities</span></button>
                     </div>
                     {activities.length > 0 ? (
                         <div className="space-y-4">

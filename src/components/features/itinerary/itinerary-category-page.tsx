@@ -31,7 +31,7 @@ export function ItineraryCategoryPage({ type, title, description }: ItineraryCat
     const Icon = icons[type];
 
     return (
-        <div className="flex flex-col gap-6 p-4 md:p-8 min-h-screen bg-white">
+        <div className="flex flex-col gap-6 p-4 xl:p-8 min-h-screen bg-white">
             <div>
                 <h2 className="text-base xl:text-xl font-semibold text-black-primary">{title}</h2>
                 <p className="text-black-secondary text-sm mt-0.5">{description}</p>
@@ -47,7 +47,7 @@ export function ItineraryCategoryPage({ type, title, description }: ItineraryCat
                         onClick={() => setIsSearchOpen(true)}
                         className="h-[46px] bg-white border border-neutral-200 py-3 px-6 text-primary-600 font-semibold text-sm hover:bg-neutral-50 rounded flex items-center gap-1"
                     >
-                        Add <span className="hidden md:block">{title}</span>
+                        Add <span className="hidden xl:block">{title}</span>
                     </button>
                 </div>
 

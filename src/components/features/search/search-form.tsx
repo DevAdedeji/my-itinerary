@@ -33,7 +33,7 @@ export default function SearchForm({ type, onSearch, loading }: SearchFormProps)
     return (
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-sm border border-neutral-200">
             <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
 
                     {/* Dynamic Location Inputs */}
                     {type === 'flight' ? (
@@ -70,7 +70,7 @@ export default function SearchForm({ type, onSearch, loading }: SearchFormProps)
                     )}
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div className="space-y-2">
                         <label className="text-sm font-medium text-black-secondary">Date</label>
                         <div className="relative">

@@ -30,12 +30,12 @@ export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
-        <header className="w-full h-auto min-h-[80px] md:h-[134px] bg-white flex flex-col justify-center px-4 md:px-8 sticky top-0 z-50 border-b md:border-none border-gray-100">
-            <div className="flex items-center justify-between h-[80px] md:h-auto w-full">
+        <header className="w-full h-auto min-h-[80px] xl:h-[134px] bg-white flex flex-col justify-center px-4 xl:px-8 sticky top-0 z-50 border-b xl:border-none border-gray-100">
+            <div className="flex items-center justify-between h-[80px] xl:h-auto w-full">
                 {/* Search Bar & Logo */}
                 <div className="flex items-center gap-7">
-                    <Image src={"/logo.svg"} width={58} height={56} alt="gopaddi logo" className="w-10 h-10 md:w-[58px] md:h-[56px]" />
-                    <div className="hidden md:block flex-1 max-w-md">
+                    <Image src={"/logo.svg"} width={58} height={56} alt="gopaddi logo" className="w-10 h-10 xl:w-[58px] xl:h-[56px]" />
+                    <div className="hidden xl:block flex-1 max-w-md">
                         <div className="relative">
                             <MagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 size-6 text-gray-400" />
                             <input
@@ -48,12 +48,12 @@ export function Navbar() {
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                <button className="xl:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                     {isMenuOpen ? <X className="size-8 text-black" /> : <List className="size-8 text-black" />}
                 </button>
 
                 {/* Desktop Navigation & Actions */}
-                <div className="hidden md:flex items-center gap-6">
+                <div className="hidden xl:flex items-center gap-6">
                     <nav className="flex items-center gap-6 text-neutral-700 text-sm font-medium">
                         {navbarItems.map((item) => (
                             <Link
@@ -98,7 +98,7 @@ export function Navbar() {
 
             {/* Mobile Menu Overlay */}
             {isMenuOpen && (
-                <div className="md:hidden absolute top-[80px] left-0 w-full bg-white border-t border-gray-100 shadow-lg p-6 flex flex-col gap-6 h-[calc(100vh-80px)] overflow-y-auto no-scrollbar">
+                <div className="xl:hidden absolute top-[80px] left-0 w-full bg-white border-t border-gray-100 shadow-lg p-6 flex flex-col gap-6 h-[calc(100vh-80px)] overflow-y-auto no-scrollbar">
                     {/* Mobile Search */}
                     <div className="relative w-full">
                         <MagnifyingGlass className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-gray-400" />

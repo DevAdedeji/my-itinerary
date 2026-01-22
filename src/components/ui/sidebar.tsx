@@ -28,8 +28,8 @@ export function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <aside className="sticky top-0 md:top-[120px] lg:top-[154px] z-30 rounded-sm w-full md:w-[250px] lg:w-[300px] bg-white flex flex-row md:flex-col p-4 md:p-6 md:self-start md:h-[calc(100vh-140px)] lg:md:h-[calc(100vh-174px)] shadow-sm md:shadow-none overflow-x-auto md:overflow-visible scrollbar-hide">
-            <nav className="flex flex-row md:flex-col gap-2 md:gap-0 md:space-y-1 w-max md:w-full md:flex-1 md:overflow-y-auto md:min-h-0 no-scrollbar">
+        <aside className="sticky top-0 xl:top-[120px] z-30 rounded-sm w-full xl:w-[250px] bg-white flex flex-row xl:flex-col p-4 xl:p-6 xl:self-start xl:h-[calc(100vh-140px)] shadow-sm xl:shadow-none overflow-x-auto xl:overflow-visible scrollbar-hide">
+            <nav className="flex flex-row xl:flex-col gap-2 xl:gap-0 xl:space-y-1 w-max xl:w-full xl:flex-1 xl:overflow-y-auto xl:min-h-0 no-scrollbar">
                 {sidebarItems.map((item) => {
                     const isActive = pathname === item.href;
 
@@ -48,14 +48,14 @@ export function Sidebar() {
                             )}
                             onClick={(e) => !isimplemented && e.preventDefault()}
                         >
-                            <item.icon className={cn("size-8", isActive ? "stroke-primary-600 md:text-white" : "group-hover:text-primary-600")} />
-                            <span className="font-medium text-sm md:text-base">{item.label}</span>
+                            <item.icon className={cn("size-8", isActive ? "stroke-primary-600 xl:text-white" : "group-hover:text-primary-600")} />
+                            <span className="font-medium text-sm xl:text-base">{item.label}</span>
                         </Link>
                     );
                 })}
             </nav>
 
-            <div className="mt-auto hidden md:flex h-[86px] bg-gray-50 p-4 rounded-xl items-center justify-between cursor-pointer hover:bg-gray-100 shrink-0 md:mt-4">
+            <div className="mt-auto hidden xl:flex h-[86px] bg-gray-50 p-4 rounded-xl items-center justify-between cursor-pointer hover:bg-gray-100 shrink-0 xl:mt-4">
                 <div className="flex items-center gap-2">
                     <div className="bg-blue-600 rounded text-base text-white size-[50px] flex items-center justify-center">Go</div>
                     <span className="text-gray-600 text-sm font-medium">Personal Account</span>
