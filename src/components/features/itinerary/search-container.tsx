@@ -61,7 +61,7 @@ export default function SearchContainer() {
                             <AirPlaneInFlight className="size-6 text-black-primary" />
                             <p className="text-lg text-black-primary font-semibold">Flights</p>
                         </div>
-                        <button onClick={() => setActiveModal('flight')} className="h-[46px] bg-white py-3 px-6 text-primary-600 font-semibold text-sm rounded hover:bg-neutral-50">Add Flights</button>
+                        <button onClick={() => setActiveModal('flight')} className="h-[46px] bg-white py-3 px-6 text-primary-600 font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden md:block">Flights</span></button>
                     </div>
                     {flights.length > 0 ? (
                         <div className="space-y-4">
@@ -100,7 +100,7 @@ export default function SearchContainer() {
                             <Warehouse className="size-6 text-white" />
                             <p className="text-lg font-semibold">Hotels</p>
                         </div>
-                        <button onClick={() => setActiveModal('hotel')} className="h-[46px] bg-white py-3 px-6 text-black-primary font-semibold text-sm rounded hover:bg-neutral-50">Add Hotels</button>
+                        <button onClick={() => setActiveModal('hotel')} className="h-[46px] bg-white py-3 px-6 text-black-primary font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden md:block">Hotels</span></button>
                     </div>
                     {hotels.length > 0 ? (
                         <div className="space-y-4">
@@ -139,7 +139,7 @@ export default function SearchContainer() {
                             <RoadHorizon className="size-6 stroke-white" />
                             <p className="text-lg font-semibold">Activities</p>
                         </div>
-                        <button onClick={() => setActiveModal('activity')} className="h-[46px] bg-white py-3 px-6 text-black-primary font-semibold text-sm rounded hover:bg-neutral-50">Add Activities</button>
+                        <button onClick={() => setActiveModal('activity')} className="h-[46px] bg-white py-3 px-6 text-black-primary font-semibold text-sm rounded hover:bg-neutral-50 flex items-center gap-1">Add <span className="hidden md:block">Activities</span></button>
                     </div>
                     {activities.length > 0 ? (
                         <div className="space-y-4">

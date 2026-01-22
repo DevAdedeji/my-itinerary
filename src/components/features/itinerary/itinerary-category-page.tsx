@@ -45,9 +45,9 @@ export function ItineraryCategoryPage({ type, title, description }: ItineraryCat
                     </div>
                     <button
                         onClick={() => setIsSearchOpen(true)}
-                        className="h-[46px] bg-white border border-neutral-200 py-3 px-6 text-primary-600 font-semibold text-sm hover:bg-neutral-50 rounded"
+                        className="h-[46px] bg-white border border-neutral-200 py-3 px-6 text-primary-600 font-semibold text-sm hover:bg-neutral-50 rounded flex items-center gap-1"
                     >
-                        Add {title}
+                        Add <span className="hidden md:block">{title}</span>
                     </button>
                 </div>
 
