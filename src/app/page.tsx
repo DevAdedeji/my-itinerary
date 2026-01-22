@@ -26,9 +26,9 @@ export default function Home() {
             <h2 className="text-xl md:text-2xl text-black font-semibold">
               Bahamas Family Trip
             </h2>
-            <div className="flex items-center gap-1 text-sm md:text-base">
+            <div className="flex items-center flex-wrap gap-1 text-sm md:text-base">
               <p className="font-medium text-black-secondary ">New York,  United States of America </p>
-              <div className="w-px border-l border-neutral-500 h-4"></div>
+              <div className="hidden lg:block w-px border-l border-neutral-500 h-4"></div>
               <p className="font-medium text-black-secondary ">Solo Trip</p>
             </div>
           </div>

@@ -31,9 +31,9 @@ export function ItineraryCategoryPage({ type, title, description }: ItineraryCat
     const Icon = icons[type];
 
     return (
-        <div className="flex flex-col gap-6 p-8 min-h-screen bg-white">
+        <div className="flex flex-col gap-6 p-4 md:p-8 min-h-screen bg-white">
             <div>
-                <h2 className="text-xl font-semibold text-black-primary">{title}</h2>
+                <h2 className="text-base xl:text-xl font-semibold text-black-primary">{title}</h2>
                 <p className="text-black-secondary text-sm mt-0.5">{description}</p>
             </div>
 
