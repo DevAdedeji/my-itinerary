@@ -9,7 +9,6 @@ export async function GET(request: NextRequest) {
         return NextResponse.json({ error: 'Endpoint parameter is required' }, { status: 400 });
     }
 
-    // Remove endpoint from params to forward the rest
     const params: Record<string, string> = {};
     searchParams.forEach((value, key) => {
         if (key !== 'endpoint') {
@@ -17,7 +16,7 @@ export async function GET(request: NextRequest) {
         }
     });
 
-    const API_KEY = process.env.NEXT_PUBLIC_RAPIDAPI_KEY || '783c990fdbmsh9d5fe36eb993d8fp11623ejsnc8b4bf474be8';
+    const API_KEY = process.env.NEXT_PUBLIC_RAPIDAPI_KEY;
 
     try {
         const response = await axios.get(`https://booking-com15.p.rapidapi.com${endpoint}`, {

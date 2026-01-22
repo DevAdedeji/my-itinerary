@@ -20,6 +20,7 @@ interface HotelCardProps {
     nights: number;
     guests: number;
     images: string[];
+    onRemove?: () => void;
 }
 
 export function HotelCard({
@@ -34,7 +35,8 @@ export function HotelCard({
     totalPrice,
     nights,
     guests,
-    images
+    images,
+    onRemove
 }: HotelCardProps) {
     return (
         <div className="bg-white p-6 relative flex gap-6">
@@ -55,9 +57,9 @@ export function HotelCard({
 
                     <div className="text-right shrink-0">
                         <div className="font-bold text-xl 2xl:text-2xl text-gray-900 whitespace-nowrap">
-                            ₦ {price.toLocaleString('en-NG', { minimumFractionDigits: 2 })}
+                            USD {price.toLocaleString('en-NG', { minimumFractionDigits: 2 })}
                         </div>
-                        <div className="text-sm text-black-secondary mt-1 whitespace-nowrap">Total Price: NGN {totalPrice.toLocaleString()}</div>
+                        <div className="text-sm text-black-secondary mt-1 whitespace-nowrap">Total Price: USD {totalPrice.toLocaleString()}</div>
                         <div className="text-sm text-black-secondary whitespace-nowrap">1 room x {nights} nights incl. taxes</div>
                     </div>
                 </div>
@@ -112,7 +114,7 @@ export function HotelCard({
             </div>
 
             {/* Remove Button Side Panel */}
-            <div className="w-12 flex items-center justify-center bg-[#FBEAE9] rounded-r-lg absolute right-0 top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors">
+            <div onClick={onRemove} className="w-12 flex items-center justify-center bg-[#FBEAE9] rounded-r-lg absolute right-0 top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors">
                 <X className="w-5 h-5 text-red-600" />
             </div>
         </div>

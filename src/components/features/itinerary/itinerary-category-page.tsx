@@ -19,6 +19,7 @@ interface ItineraryCategoryPageProps {
 
 export function ItineraryCategoryPage({ type, title, description }: ItineraryCategoryPageProps) {
     const items = useItineraryStore((state) => state.items).filter((item) => item.type === type);
+    const removeItem = useItineraryStore((state) => state.removeItem);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
 
     const icons = {
@@ -62,6 +63,7 @@ export function ItineraryCategoryPage({ type, title, description }: ItineraryCat
                             <div key={item.id}>
                                 {type === 'flight' && (
                                     <FlightCard
+                                        logo={item.logo}
                                         airline={item.title}
                                         flightNumber={item.details?.flightNumber || 'N/A'}
                                         classType={item.details?.classType || 'Economy'}
@@ -73,6 +75,7 @@ export function ItineraryCategoryPage({ type, title, description }: ItineraryCat
                                         arrivalCode={item.details?.arrivalCode || 'ARR'}
                                         duration={item.details?.duration || '-'}
                                         price={item.price}
+                                        onRemove={() => removeItem(item.id)}
                                     />
                                 )}
                                 {type === 'hotel' && (
@@ -89,6 +92,7 @@ export function ItineraryCategoryPage({ type, title, description }: ItineraryCat
                                         nights={item.details?.nights || 1}
                                         guests={item.details?.guests || 1}
                                         images={item.details?.images || []}
+                                        onRemove={() => removeItem(item.id)}
                                     />
                                 )}
                                 {type === 'activity' && (
@@ -103,6 +107,7 @@ export function ItineraryCategoryPage({ type, title, description }: ItineraryCat
                                         date={item.date || 'TBD'}
                                         time={item.details?.time || '00:00'}
                                         images={item.details?.images || []}
+                                        onRemove={() => removeItem(item.id)}
                                     />
                                 )}
                             </div>

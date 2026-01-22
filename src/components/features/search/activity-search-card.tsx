@@ -37,7 +37,7 @@ export function ActivitySearchCard({
                     <div className="flex justify-between items-start gap-4">
                         <h3 className="font-bold text-lg text-black-primary line-clamp-1">{name}</h3>
                         <div className="font-bold text-lg text-black-primary whitespace-nowrap">
-                            ₦ {price.toLocaleString('en-NG', { minimumFractionDigits: 2 })}
+                            USD {price.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                         </div>
                     </div>
                     <p className="text-black-secondary text-sm mt-1 line-clamp-2">{description}</p>

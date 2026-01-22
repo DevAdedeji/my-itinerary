@@ -19,6 +19,8 @@ interface FlightCardProps {
     arrivalCode: string;
     duration: string;
     price: number;
+    logo: string;
+    onRemove?: () => void;
 }
 
 export function FlightCard({
@@ -32,7 +34,9 @@ export function FlightCard({
     arrivalDate,
     arrivalCode,
     duration,
-    price
+    price,
+    logo,
+    onRemove
 }: FlightCardProps) {
     return (
         <div className="bg-white rounded-lg shadow-sm border border-gray-100 relative flex gap-0">
@@ -41,7 +45,7 @@ export function FlightCard({
                 {/* Header - Airline Info & Route */}
                 <div className="flex justify-between items-center mb-8 gap-6">
                     <div className="flex items-center gap-3 shrink-0">
-                        <Image src="/american_airlines_symbol.svg" width={24} height={24} alt={airline} />
+                        <Image src={logo} width={24} height={24} alt={airline} />
                         <div>
                             <h3 className="font-bold text-base 2xl:text-lg text-black-primary">{airline}</h3>
                             <div className="flex items-center gap-2 text-sm text-black-secondary">
@@ -124,7 +128,7 @@ export function FlightCard({
             </div>
 
             {/* Remove Button Side Panel */}
-            <div className="w-16 flex items-center justify-center bg-[#FBEAE9] rounded-r-lg absolute right-0 top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors">
+            <div onClick={onRemove} className="w-16 flex items-center justify-center bg-[#FBEAE9] rounded-r-lg absolute right-0 top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors">
                 <X className="size-6 text-red-600" />
             </div>
         </div>

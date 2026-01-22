@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, SVGProps } from 'react';
-import { SearchForm } from './search-form';
-import { SearchResults } from './search-results';
+import SearchForm from './search-form';
+import SearchResults from './search-results';
 import XIcon from '@/assets/icons/X.svg';
 import { searchFlights, searchHotels, searchActivities, SearchParams } from '@/services/api';
 import { toast } from 'sonner';
@@ -18,12 +18,25 @@ export function SearchModal({ isOpen, onClose, type }: SearchModalProps) {
 
     const [results, setResults] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
+    const [hasSearched, setHasSearched] = useState(false);
 
     const handleSearch = async (data: any) => {
+        // Validation Logic
+        if (type === 'flight') {
+            if (!data.from || !data.to) {
+                toast.error("Please ensure 'From' and 'To' locations are selected.");
+                return;
+            }
+        } else if (type === 'hotel' || type === 'activity') {
+            if (!data.location) {
+                toast.error("Please ensure a location is selected.");
+                return;
+            }
+        }
+
         setLoading(true);
         setResults([]);
         try {
-            console.log("Searching...", data);
             let response: any[] = [];
 
             const params: SearchParams = {
@@ -48,6 +61,7 @@ export function SearchModal({ isOpen, onClose, type }: SearchModalProps) {
             toast.error(`Failed to search ${type}s. Please try again.`);
         } finally {
             setLoading(false);
+            setHasSearched(true);
         }
     };
 
@@ -78,7 +92,7 @@ export function SearchModal({ isOpen, onClose, type }: SearchModalProps) {
                     <SearchForm type={type} onSearch={handleSearch} loading={loading} />
 
                     <div className="mt-8">
-                        <SearchResults type={type} results={results} loading={loading} onClose={onClose} />
+                        <SearchResults type={type} results={results} loading={loading} onClose={onClose} hasSearched={hasSearched} />
                     </div>
                 </div>
 

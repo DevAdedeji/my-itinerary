@@ -4,6 +4,7 @@ import AirplaneLanding from '@/assets/icons/AirplaneLanding.svg';
 import { cn } from '@/lib/utils';
 
 interface FlightSearchCardProps {
+    logo: string;
     airline: string;
     flightNumber: string;
     classType: string;
@@ -30,6 +31,7 @@ export function FlightSearchCard({
     arrivalCode,
     duration,
     price,
+    logo,
     onAdd
 }: FlightSearchCardProps) {
     return (
@@ -39,8 +41,7 @@ export function FlightSearchCard({
                 <div className="flex justify-between items-center mb-6 gap-4">
                     <div className="flex items-center gap-3 shrink-0">
                         <div className="w-8 h-8 relative">
-                            {/* Placeholder generic logo if specific one fails or missing */}
-                            <Image src="/american_airlines_symbol.svg" fill alt={airline} className="object-contain" />
+                            <Image src={logo} width={24} height={24} alt={airline} />
                         </div>
                         <div>
                             <h3 className="font-bold text-base text-black-primary">{airline}</h3>

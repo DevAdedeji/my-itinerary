@@ -8,6 +8,7 @@ type ItineraryItem = {
     price: number;
     date?: string;
     details?: any;
+    logo: string;
 };
 
 type ItineraryStore = {

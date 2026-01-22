@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import MagnifyingGlassIcon from '@/assets/icons/MagnifyingGlass.svg';
 import CalendarIcon from '@/assets/icons/CalendarBlank.svg';
-import MapPinIcon from '@/assets/icons/MapPin.svg';
 import UserIcon from '@/assets/icons/UserPlus.svg';
+import { LocationAutocomplete } from './location-autocomplete';
 
 
 interface SearchFormProps {
@@ -12,7 +12,7 @@ interface SearchFormProps {
     loading: boolean;
 }
 
-export function SearchForm({ type, onSearch, loading }: SearchFormProps) {
+export default function SearchForm({ type, onSearch, loading }: SearchFormProps) {
     const [formData, setFormData] = useState({
         from: '',
         to: '',
@@ -40,44 +40,32 @@ export function SearchForm({ type, onSearch, loading }: SearchFormProps) {
                         <>
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-black-secondary">From</label>
-                                <div className="relative">
-                                    <MapPinIcon className="absolute left-3 top-3 size-5 text-neutral-400" />
-                                    <input
-                                        type="text"
-                                        placeholder="Areport Code (e.g. BOM.AIRPORT)"
-                                        className="w-full pl-10 pr-4 py-2.5 bg-neutral-100 rounded border-none focus:ring-1 focus:ring-primary-600 outline-none"
-                                        value={formData.from}
-                                        onChange={(e) => setFormData({ ...formData, from: e.target.value })}
-                                    />
-                                </div>
+                                <LocationAutocomplete
+                                    type="flight"
+                                    placeholder="From (e.g. New York)"
+                                    onSelect={(val) => setFormData({ ...formData, from: val })}
+                                    defaultValue={formData.from}
+                                />
                             </div>
                             <div className="space-y-2">
                                 <label className="text-sm font-medium text-black-secondary">To</label>
-                                <div className="relative">
-                                    <MapPinIcon className="absolute left-3 top-3 size-5 text-neutral-400" />
-                                    <input
-                                        type="text"
-                                        placeholder="Airport Code (e.g. DEL.AIRPORT)"
-                                        className="w-full pl-10 pr-4 py-2.5 bg-neutral-100 rounded border-none focus:ring-1 focus:ring-primary-600 outline-none"
-                                        value={formData.to}
-                                        onChange={(e) => setFormData({ ...formData, to: e.target.value })}
-                                    />
-                                </div>
+                                <LocationAutocomplete
+                                    type="flight"
+                                    placeholder="To (e.g. London)"
+                                    onSelect={(val) => setFormData({ ...formData, to: val })}
+                                    defaultValue={formData.to}
+                                />
                             </div>
                         </>
                     ) : (
                         <div className="col-span-2 space-y-2">
                             <label className="text-sm font-medium text-black-secondary">Location</label>
-                            <div className="relative">
-                                <MapPinIcon className="absolute left-3 top-3 size-5 text-neutral-400" />
-                                <input
-                                    type="text"
-                                    placeholder={type === 'hotel' ? "City ID (e.g. -2092174)" : "Location ID (e.g. eyJ...)"}
-                                    className="w-full pl-10 pr-4 py-2.5 bg-neutral-100 rounded border-none focus:ring-1 focus:ring-primary-600 outline-none"
-                                    value={formData.location}
-                                    onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                                />
-                            </div>
+                            <LocationAutocomplete
+                                type={type === 'hotel' ? 'hotel' : 'activity'}
+                                placeholder="Where are you going?"
+                                onSelect={(val) => setFormData({ ...formData, location: val })}
+                                defaultValue={formData.location}
+                            />
                         </div>
                     )}
                 </div>
