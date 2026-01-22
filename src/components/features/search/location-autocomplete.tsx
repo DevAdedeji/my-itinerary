@@ -91,7 +91,7 @@ export function LocationAutocomplete({ type, placeholder, onSelect, defaultValue
                 value={query}
                 onChange={(e) => {
                     setQuery(e.target.value);
-                    if (e.target.value.length > 0) setLoading(true);
+                    if (e.target.value.length > 0) { setLoading(true); setIsOpen(true); }
                 }}
                 placeholder={placeholder || "Search location..."}
                 className="w-full pl-10 pr-4 py-2.5 bg-neutral-100 rounded border-none focus:ring-1 focus:ring-primary-600 outline-none"
