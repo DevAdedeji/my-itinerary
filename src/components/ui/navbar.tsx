@@ -41,7 +41,7 @@ export function Navbar() {
                             <input
                                 type="text"
                                 placeholder="Search"
-                                className=" bg-gray-50 border-none rounded-lg pl-10 pr-4 py-2.5 h-14 text-sm focus:ring-2 focus:ring-blue-100 outline-none w-[300px] lg:w-[400px]"
+                                className=" bg-gray-50 border-none rounded-lg pl-10 pr-4 py-2.5 h-14 text-sm focus:ring-2 focus:ring-blue-100 outline-none w-auto 2xl:w-[400px]"
                             />
                         </div>
                     </div>
@@ -59,7 +59,7 @@ export function Navbar() {
                             <Link
                                 key={item.label}
                                 href={item.active ? item.href : '#'}
-                                className={`flex flex-col items-center gap-1 ${item.active ? 'hover:text-primary-600' : 'opacity-40 cursor-not-allowed hover:text-neutral-700'}`}
+                                className={`flex flex-col items-center gap-1 whitespace-nowrap ${item.active ? 'hover:text-primary-600' : 'opacity-40 cursor-not-allowed hover:text-neutral-700'}`}
                                 onClick={(e) => !item.active && e.preventDefault()}
                             >
                                 <item.icon className="size-8" />
