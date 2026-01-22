@@ -1,8 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --neutral-300: #F0F2F5;
+  --neutral-400: #E4E7EC;
+  --neutral-500: #D0D5DD;
+  --neutral-700: #667185;
+  --primary-100: #E7F0FF;
+  --primary-600: #0D6EFD;
+  --primary-700: #0054E4;
+  --primary-900: #0A369D;
+  --black-primary: #1D2433;
+  --black-secondary: #676E7E;
+  --error-100: #FBEAE9;
+  --black: #000000;
+  --secondary-100: #FEF4E6;
+  --secondary-900: #7A4504;
+  --primary-1100: #000031;
 }
 
 @theme inline {
@@ -10,17 +23,49 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-neutral-300: var(--neutral-300);
+  --color-neutral-400: var(--neutral-400);
+  --color-neutral-500: var(--neutral-500);
+  --color-neutral-700: var(--neutral-700);
+  --color-primary-100: var(--primary-100);
+  --color-primary-600: var(--primary-600);
+  --color-primary-700: var(--primary-700);
+  --color-primary-900: var(--primary-900);
+  --color-primary-1100: var(--primary-1100);
+  --color--black-primary: var(--black-primary);
+  --color--black-secondary: var(--black-secondary);
+  --color-error-100: var(--error-100);
+  --color-black: var(--black);
+  --color-secondary-100: var(--secondary-100);
+  --color-secondary-900: var(--secondary-900);
+  --breakpoint-2xl: 1400px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--neutral-300);
+  color: var(--black-secondary);
+  font-family: "Poppins", Helvetica, sans-serif;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Hide calendar icon in Chrome, Safari, Edge, Opera */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+/* Hide calendar icon in Firefox */
+input[type="date"]::-moz-calendar-picker-indicator {
+  display: none;
+}
+
+/* Additional reset */
+input[type="date"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
