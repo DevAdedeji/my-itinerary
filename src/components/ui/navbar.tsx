@@ -16,6 +16,16 @@ import CaretDown from '@/assets/icons/CaretDown.svg';
 import X from '@/assets/icons/X.svg';
 import List from '@/assets/icons/menu.svg';
 
+const navbarItems = [
+
+    { href: '/', label: 'Home', icon: House, active: true },
+    { href: '/dashboard', label: 'Dashboard', icon: ChartPieSlice, active: false },
+    { href: '/wallet', label: 'Wallet', icon: Wallet, active: false },
+    { href: '/plan', label: 'Plan a trip', icon: ListCheckes, active: false },
+    { href: '/commission', label: 'Commission for life', icon: HandCoines, active: false },
+
+]
+
 export function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -45,26 +55,17 @@ export function Navbar() {
                 {/* Desktop Navigation & Actions */}
                 <div className="hidden md:flex items-center gap-6">
                     <nav className="flex items-center gap-6 text-neutral-700 text-sm font-medium">
-                        <Link href="/" className="flex flex-col items-center gap-1 hover:text-primary-600">
-                            <House className="size-8" />
-                            <span>Home</span>
-                        </Link>
-                        <Link href="/dashboard" className="flex flex-col items-center gap-1 hover:text-primary-600">
-                            <ChartPieSlice className="size-8" />
-                            <span>Dashboard</span>
-                        </Link>
-                        <Link href="/wallet" className="flex flex-col items-center gap-1 hover:text-primary-600">
-                            <Wallet className="size-8" />
-                            <span>Wallet</span>
-                        </Link>
-                        <Link href="/plan" className="flex flex-col items-center gap-1 text-black-primary hover:text-primary-600 text-nowrap">
-                            <ListCheckes className="size-8" />
-                            <span>Plan a trip</span>
-                        </Link>
-                        <Link href="/commission" className="flex flex-col items-center gap-1 hover:text-primary-600 text-nowrap">
-                            <HandCoines className="size-8" />
-                            <span>Commission for life</span>
-                        </Link>
+                        {navbarItems.map((item) => (
+                            <Link
+                                key={item.label}
+                                href={item.active ? item.href : '#'}
+                                className={`flex flex-col items-center gap-1 ${item.active ? 'hover:text-primary-600' : 'opacity-40 cursor-not-allowed hover:text-neutral-700'}`}
+                                onClick={(e) => !item.active && e.preventDefault()}
+                            >
+                                <item.icon className="size-8" />
+                                <span>{item.label}</span>
+                            </Link>
+                        ))}
                     </nav>
 
                     <div className="h-8 w-px bg-gray-200 mx-2"></div>
@@ -109,26 +110,29 @@ export function Navbar() {
                     </div>
 
                     <nav className="flex flex-col gap-4 text-neutral-700 font-medium">
-                        <Link href="/" className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded" onClick={() => setIsMenuOpen(false)}>
-                            <House className="size-8" />
-                            <span>Home</span>
-                        </Link>
-                        <Link href="/dashboard" className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded" onClick={() => setIsMenuOpen(false)}>
-                            <ChartPieSlice className="size-8" />
-                            <span>Dashboard</span>
-                        </Link>
-                        <Link href="/wallet" className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded" onClick={() => setIsMenuOpen(false)}>
-                            <Wallet className="size-8" />
-                            <span>Wallet</span>
-                        </Link>
-                        <Link href="/plan" className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded" onClick={() => setIsMenuOpen(false)}>
-                            <ListCheckes className="size-8" />
-                            <span>Plan a trip</span>
-                        </Link>
-                        <Link href="/commission" className="flex items-center gap-4 p-2 hover:bg-gray-50 rounded" onClick={() => setIsMenuOpen(false)}>
-                            <HandCoines className="size-8" />
-                            <span>Commission for life</span>
-                        </Link>
+                        {[
+                            { href: '/', label: 'Home', icon: House, active: true },
+                            { href: '/dashboard', label: 'Dashboard', icon: ChartPieSlice, active: false },
+                            { href: '/wallet', label: 'Wallet', icon: Wallet, active: false },
+                            { href: '/plan', label: 'Plan a trip', icon: ListCheckes, active: false },
+                            { href: '/commission', label: 'Commission for life', icon: HandCoines, active: false },
+                        ].map((item) => (
+                            <Link
+                                key={item.label}
+                                href={item.active ? item.href : '#'}
+                                className={`flex items-center gap-4 p-2 rounded ${item.active ? 'hover:bg-gray-50' : 'opacity-40 cursor-not-allowed hover:bg-transparent'}`}
+                                onClick={(e) => {
+                                    if (!item.active) {
+                                        e.preventDefault();
+                                    } else {
+                                        setIsMenuOpen(false);
+                                    }
+                                }}
+                            >
+                                <item.icon className="size-6" />
+                                <span>{item.label}</span>
+                            </Link>
+                        ))}
                     </nav>
 
                     <div className="h-px bg-gray-100 w-full"></div>

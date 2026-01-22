@@ -32,16 +32,21 @@ export function Sidebar() {
             <nav className="flex flex-row md:flex-col gap-2 md:gap-0 md:space-y-1 w-max md:w-full">
                 {sidebarItems.map((item) => {
                     const isActive = pathname === item.href;
+
+                    const isimplemented = ['/activities', '/hotels', '/flights'].includes(item.href);
+
                     return (
                         <Link
                             key={item.label}
-                            href={item.href}
+                            href={isimplemented ? item.href : '#'}
                             className={cn(
                                 "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors group whitespace-nowrap",
                                 isActive
                                     ? "bg-gray-50 text-primary-600 shadow-primary-600/20"
-                                    : "text-black-secondary hover:bg-gray-50 hover:text-primary-600"
+                                    : "text-black-secondary hover:bg-gray-50 hover:text-primary-600",
+                                !isimplemented && "opacity-40 cursor-not-allowed hover:bg-transparent hover:text-black-secondary"
                             )}
+                            onClick={(e) => !isimplemented && e.preventDefault()}
                         >
                             <item.icon className={cn("size-8", isActive ? "stroke-primary-600 md:text-white" : "group-hover:text-primary-600")} />
                             <span className="font-medium text-sm md:text-base">{item.label}</span>
