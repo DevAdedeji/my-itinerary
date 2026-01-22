@@ -21,7 +21,6 @@ export function SearchModal({ isOpen, onClose, type }: SearchModalProps) {
     const [hasSearched, setHasSearched] = useState(false);
 
     const handleSearch = async (data: any) => {
-        // Validation Logic
         if (type === 'flight') {
             if (!data.from || !data.to) {
                 toast.error("Please ensure 'From' and 'To' locations are selected.");
