@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { searchLocations } from '@/services/api';
 import MapPinIcon from '@/assets/icons/MapPin.svg';
 import { cn } from '@/lib/utils';
+import { toast } from 'sonner';
 
 interface LocationAutocompleteProps {
     type: 'flight' | 'hotel' | 'activity';
@@ -53,8 +54,10 @@ export function LocationAutocomplete({ type, placeholder, onSelect, defaultValue
                 const data = await searchLocations(debouncedQuery, type);
                 setResults(data);
                 setIsOpen(true);
-            } catch (error) {
+            } catch (error: any) {
                 console.error(error);
+                const message = error.response?.data?.details?.message || error.response?.data?.error || "Failed to search locations";
+                toast.error(message);
             } finally {
                 setLoading(false);
             }

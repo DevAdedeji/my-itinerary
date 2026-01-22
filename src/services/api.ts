@@ -221,6 +221,6 @@ export const searchLocations = async (query: string, type: 'flight' | 'hotel' | 
         return [];
     } catch (error) {
         console.error("Location Search API Error:", error);
-        return [];
+        throw error;
     }
 };
