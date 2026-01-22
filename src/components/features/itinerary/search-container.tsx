@@ -23,7 +23,7 @@ export default function SearchContainer() {
     return (
         <>
             {/* Action Cards */}
-            <div className="grid grid-cols-3 gap-6 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
                 <ActionCard
                     variant="dark"
                     title="Activities"

@@ -39,23 +39,21 @@ export function HotelCard({
     onRemove
 }: HotelCardProps) {
     return (
-        <div className="bg-white p-6 relative flex gap-6">
+        <div className="bg-white p-4 md:p-6 relative flex flex-col md:flex-row gap-6 rounded-lg">
             {/* Carousel */}
-            <div className="shrink-0">
+            <div className="shrink-0 w-full md:w-[300px]">
                 <Carousel images={images} />
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 flex flex-col pr-12 min-w-0">
-                <div className="flex justify-between items-start gap-6">
-                    <div className="flex-1 min-w-0">
+            <div className="flex-1 flex flex-col md:pr-12 min-w-0">
+                <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-6">
+                    <div className="flex-1 min-w-0 w-full">
                         <h3 className="font-semibold text-lg 2xl:text-xl text-black mb-2">{name}</h3>
                         <p className="text-black-primary text-sm 2xl:text-base max-w-lg mb-4">{address}</p>
                     </div>
 
-
-
-                    <div className="text-right shrink-0">
+                    <div className="text-left md:text-right shrink-0 w-full md:w-auto">
                         <div className="font-bold text-xl 2xl:text-2xl text-gray-900 whitespace-nowrap">
                             USD {price.toLocaleString('en-NG', { minimumFractionDigits: 2 })}
                         </div>
@@ -64,7 +62,7 @@ export function HotelCard({
                     </div>
                 </div>
 
-                <div className="flex items-center gap-3 text-sm 2xl:text-base">
+                <div className="flex items-center gap-3 text-sm 2xl:text-base flex-wrap my-4 md:my-0">
                     <div className="flex items-center gap-1 text-primary-600 font-medium">
                         <MapPin className="size-[18px]" />
                         <span>Show in map</span>
@@ -83,12 +81,16 @@ export function HotelCard({
 
                 <div className="flex items-center justify-between mb-2 gap-4 flex-wrap">
                     <div className="flex items-center gap-6">
-                        <div className="flex items-center gap-2 text-sm text-black-secondary">
+                        <div className="flex items-center gap-2 text-sm text-black-secondary flex-wrap">
                             <h4 className="font-medium text-gray-700">Facilities:</h4>
-                            <Waves className="size-5" />
-                            <span>Pool</span>
-                            <Wine className="size-5" />
-                            <span>Bar</span>
+                            <div className="flex items-center gap-1">
+                                <Waves className="size-5" />
+                                <span>Pool</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <Wine className="size-5" />
+                                <span>Bar</span>
+                            </div>
                         </div>
                     </div>
 
@@ -104,7 +106,7 @@ export function HotelCard({
                     </div>
                 </div>
 
-                <div className="mt-auto border-t border-neutral-400 pt-4 flex items-center justify-between">
+                <div className="mt-auto border-t border-neutral-400 pt-4 flex items-center justify-between flex-wrap gap-4">
                     <div className="flex gap-4">
                         <button className="text-primary-600 font-medium text-sm hover:underline">Hotel details</button>
                         <button className="text-primary-600 font-medium text-sm hover:underline">Price details</button>
@@ -114,7 +116,7 @@ export function HotelCard({
             </div>
 
             {/* Remove Button Side Panel */}
-            <div onClick={onRemove} className="w-12 flex items-center justify-center bg-[#FBEAE9] rounded-r-lg absolute right-0 top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors">
+            <div onClick={onRemove} className="w-full h-12 md:h-auto md:w-12 flex items-center justify-center bg-[#FBEAE9] rounded-b-lg md:rounded-b-none md:rounded-r-lg relative md:absolute right-0 top-auto md:top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors order-last md:order-0">
                 <X className="w-5 h-5 text-red-600" />
             </div>
         </div>

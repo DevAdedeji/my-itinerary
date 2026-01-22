@@ -39,11 +39,11 @@ export function FlightCard({
     onRemove
 }: FlightCardProps) {
     return (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-100 relative flex gap-0">
+        <div className="bg-white rounded-lg shadow-sm border border-gray-100 relative flex flex-col md:flex-row gap-0">
             {/* Main Content */}
-            <div className="flex-1 p-6 pr-20">
+            <div className="flex-1 p-4 md:p-6 md:pr-20">
                 {/* Header - Airline Info & Route */}
-                <div className="flex justify-between items-center mb-8 gap-6">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
                     <div className="flex items-center gap-3 shrink-0">
                         <Image src={logo} width={24} height={24} alt={airline} />
                         <div>
@@ -56,13 +56,13 @@ export function FlightCard({
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-8 2xl:gap-10 flex-1 max-w-[600px] justify-center">
-                        <div className="text-center shrink-0">
+                    <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 2xl:gap-10 flex-1 w-full md:max-w-[600px] justify-center">
+                        <div className="flex items-center justify-between w-full md:w-auto md:block text-center shrink-0">
                             <div className="font-semibold text-xl 2xl:text-2xl text-black-primary">{departureTime}</div>
                             <div className="text-sm text-black-secondary">{departureDate}</div>
                         </div>
 
-                        <div className="flex-1 grid grid-cols-1 items-center px-4 min-w-[150px]">
+                        <div className="flex-1 w-full md:w-auto grid grid-cols-1 items-center px-4 min-w-[150px]">
                             <div className="flex items-center justify-between w-full text-sm text-black-secondary mb-2">
                                 <AirplaneTakeOff className="size-5 shrink-0" />
                                 <span className="text-xs text-center">Duration: {duration}</span>
@@ -78,13 +78,13 @@ export function FlightCard({
                             </div>
                         </div>
 
-                        <div className="text-center shrink-0">
+                        <div className="flex items-center justify-between w-full md:w-auto md:block text-center shrink-0">
                             <div className="font-semibold text-xl 2xl:text-2xl text-black-primary">{arrivalTime}</div>
                             <div className="text-sm text-black-secondary">{arrivalDate}</div>
                         </div>
                     </div>
 
-                    <div className="text-right shrink-0 min-w-[140px]">
+                    <div className="text-left md:text-right shrink-0 min-w-[140px] w-full md:w-auto">
                         <div className="font-bold text-xl 2xl:text-2xl text-black-primary whitespace-nowrap">
                             ₦ {price.toLocaleString('en-NG', { minimumFractionDigits: 2 })}
                         </div>
@@ -94,7 +94,7 @@ export function FlightCard({
                 <div className="border-t border-neutral-400 my-6"></div>
 
                 {/* Facilities & Actions */}
-                <div className="flex items-center justify-between">
+                <div className="flex items-start md:items-center justify-between flex-col md:flex-row gap-4">
                     <div className="flex items-center gap-4 flex-wrap">
                         <h4 className="text-sm text-black-secondary font-medium mr-2">Facilities:</h4>
                         <div className="flex items-center gap-2 text-sm text-black-secondary shrink-0">
@@ -118,8 +118,8 @@ export function FlightCard({
 
                 <div className="border-t border-neutral-400 my-6"></div>
 
-                <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-8">
+                <div className="flex items-center justify-between flex-wrap gap-4">
+                    <div className="flex items-center gap-4 md:gap-8">
                         <button className="text-primary-600 font-medium text-sm hover:underline">Flight details</button>
                         <button className="text-primary-600 font-medium text-sm hover:underline">Price details</button>
                     </div>
@@ -128,7 +128,7 @@ export function FlightCard({
             </div>
 
             {/* Remove Button Side Panel */}
-            <div onClick={onRemove} className="w-16 flex items-center justify-center bg-[#FBEAE9] rounded-r-lg absolute right-0 top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors">
+            <div onClick={onRemove} className="w-full h-12 md:h-auto md:w-16 flex items-center justify-center bg-[#FBEAE9] rounded-b-lg md:rounded-b-none md:rounded-r-lg relative md:absolute right-0 top-auto md:top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors order-last md:order-0">
                 <X className="size-6 text-red-600" />
             </div>
         </div>

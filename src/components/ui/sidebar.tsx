@@ -28,8 +28,8 @@ export function Sidebar() {
     const pathname = usePathname();
 
     return (
-        <aside className="sticky top-[154px] rounded-sm w-[300px] bg-white flex flex-col p-6 self-start max-h-[calc(100vh-174px)]">
-            <nav className="flex-1 space-y-1 overflow-y-auto">
+        <aside className="sticky top-0 md:top-[154px] z-30 rounded-sm w-full md:w-[300px] bg-white flex flex-row md:flex-col p-4 md:p-6 md:self-start md:max-h-[calc(100vh-174px)] shadow-sm md:shadow-none overflow-x-auto md:overflow-visible scrollbar-hide">
+            <nav className="flex flex-row md:flex-col gap-2 md:gap-0 md:space-y-1 w-max md:w-full">
                 {sidebarItems.map((item) => {
                     const isActive = pathname === item.href;
                     return (
@@ -37,20 +37,20 @@ export function Sidebar() {
                             key={item.label}
                             href={item.href}
                             className={cn(
-                                "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors group",
+                                "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors group whitespace-nowrap",
                                 isActive
                                     ? "bg-gray-50 text-primary-600 shadow-primary-600/20"
                                     : "text-black-secondary hover:bg-gray-50 hover:text-primary-600"
                             )}
                         >
-                            <item.icon className={cn("size-8", isActive ? "text-white" : "group-hover:text-primary-600")} />
-                            <span className="font-medium">{item.label}</span>
+                            <item.icon className={cn("size-8", isActive ? "stroke-primary-600 md:text-white" : "group-hover:text-primary-600")} />
+                            <span className="font-medium text-sm md:text-base">{item.label}</span>
                         </Link>
                     );
                 })}
             </nav>
 
-            <div className="my-auto h-[86px] bg-gray-50 p-4 rounded-xl flex items-center justify-between cursor-pointer hover:bg-gray-100 flex-shrink-0">
+            <div className="mt-auto hidden md:flex h-[86px] bg-gray-50 p-4 rounded-xl items-center justify-between cursor-pointer hover:bg-gray-100 shrink-0">
                 <div className="flex items-center gap-2">
                     <div className="bg-blue-600 rounded text-base text-white size-[50px] flex items-center justify-center">Go</div>
                     <span className="text-gray-600 text-sm font-medium">Personal Account</span>

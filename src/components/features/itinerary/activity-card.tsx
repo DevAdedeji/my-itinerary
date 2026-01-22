@@ -35,16 +35,16 @@ export function ActivityCard({
     onRemove
 }: ActivityCardProps) {
     return (
-        <div className="bg-white p-6 relative flex gap-6">
+        <div className="bg-white p-4 md:p-6 relative flex flex-col md:flex-row gap-6 rounded-lg">
             {/* Carousel */}
-            <div className="shrink-0">
+            <div className="shrink-0 w-full md:w-[300px]">
                 <Carousel images={images} />
             </div>
 
             {/* Main Content */}
-            <div className="flex-1 flex flex-col pr-12 min-w-0">
-                <div className="flex justify-between items-start gap-6">
-                    <div className="flex-1 min-w-0">
+            <div className="flex-1 flex flex-col md:pr-12 min-w-0">
+                <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-6">
+                    <div className="flex-1 min-w-0 w-full">
                         <h3 className="font-bold text-lg 2xl:text-xl text-black mb-2">{name}</h3>
                         <p className="text-black-primary text-sm 2xl:text-base max-w-lg mb-4">{description}</p>
 
@@ -64,7 +64,7 @@ export function ActivityCard({
                         </div>
                     </div>
 
-                    <div className="text-right shrink-0">
+                    <div className="text-left md:text-right shrink-0 w-full md:w-auto">
                         <div className="font-bold text-xl 2xl:text-2xl text-gray-900 whitespace-nowrap">
                             USD {price.toLocaleString('en-US', { minimumFractionDigits: 2 })}
                         </div>
@@ -74,10 +74,10 @@ export function ActivityCard({
 
                 <div className="border-t border-neutral-400 my-4"></div>
 
-                <div className="flex items-center justify-between mb-4 gap-4">
-                    <div className="flex items-center gap-2 text-black-secondary text-base 2xl:text-lg flex-1 min-w-0">
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-4 gap-4">
+                    <div className="flex items-center gap-2 text-black-secondary text-base 2xl:text-lg flex-1 min-w-0 flex-wrap">
                         <span className="font-medium text-gray-700 shrink-0">What's Included:</span>
-                        <span className="truncate">Admission to the Empire State Building</span>
+                        <span className="truncate max-w-[200px] md:max-w-none">Admission to the Empire State Building</span>
                         <span className="text-primary-600 font-medium cursor-pointer shrink-0">See more</span>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
@@ -89,7 +89,7 @@ export function ActivityCard({
                     </div>
                 </div>
 
-                <div className="mt-auto border-t border-neutral-400 pt-4 flex items-center justify-between">
+                <div className="mt-auto border-t border-neutral-400 pt-4 flex items-center justify-between flex-wrap gap-4">
                     <div className="flex gap-4">
                         <button className="text-primary-600 font-medium text-sm hover:underline">Activity details</button>
                         <button className="text-primary-600 font-medium text-sm hover:underline">Price details</button>
@@ -99,7 +99,7 @@ export function ActivityCard({
             </div>
 
             {/* Remove Button Side Panel */}
-            <div onClick={onRemove} className="w-12 flex items-center justify-center bg-[#FBEAE9] rounded-r-lg absolute right-0 top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors">
+            <div onClick={onRemove} className="w-full h-12 md:h-auto md:w-12 flex items-center justify-center bg-[#FBEAE9] rounded-b-lg md:rounded-b-none md:rounded-r-lg relative md:absolute right-0 top-auto md:top-0 bottom-0 cursor-pointer hover:bg-[#f9d5d3] transition-colors order-last md:order-0">
                 <X className="w-5 h-5 text-red-600" />
             </div>
         </div>

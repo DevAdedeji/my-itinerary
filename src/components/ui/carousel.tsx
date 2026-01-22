@@ -21,7 +21,7 @@ export function Carousel({ images }: CarouselProps) {
     };
 
     return (
-        <div className="relative w-[246px] h-full min-h-[232px] rounded-lg overflow-hidden group">
+        <div className="relative w-full lg:w-[246px] h-full min-h-[232px] rounded-lg overflow-hidden group">
             <Image
                 src={images[currentIndex]}
                 alt="Slide"
